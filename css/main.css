@@ -1,0 +1,39 @@
+html, body {
+    background-color: #f8f8f8;
+}
+
+#map-container {
+    margin-top: -20px;
+}
+
+.wrapper {
+    background-color: #f8f8f8;
+    margin-bottom: 20px;
+}
+
+#map {
+    background-color: #f8f8f8;
+    width: 800px;
+    height: 550px;
+}
+#card {
+    padding-top: 20px;
+    min-height: 400px;
+    font-size: 1.1em;
+}
+
+#footer {
+    /* background-color: #f3a300; */
+    color: #2f2f2f;
+    border-top: 5px solid #2f2f2f;
+    padding: 40px 0px 40px 0px;
+}
+
+.redbg {
+    background-color: #B80047 !important;
+}
+
+.bold {
+    font-weight: bold;
+    font-weight: bold;
+}
