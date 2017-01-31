@@ -7,11 +7,26 @@ var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',{
 var map = L.map('map', {center: latlng, zoom: 11, layers: [tiles]});
 
 var mcg = L.markerClusterGroup(),
-            grupoCooperativas = L.featureGroup.subGroup(mcg), // use `L.featureGroup.subGroup(parentGroup)` instead of `L.featureGroup()` or `L.layerGroup()`!
+            // use `L.featureGroup.subGroup(parentGroup)` instead of `L.featureGroup()` or `L.layerGroup()
+            distritoRemedios = L.featureGroup.subGroup(mcg),
+            distritotriana = L.featureGroup.subGroup(mcg),
+            distritoSur = L.featureGroup.subGroup(mcg),
+            distritoCascoAntiguo = L.featureGroup.subGroup(mcg),
+            distritoMacarena = L.featureGroup.subGroup(mcg),
+            distritoCerroAmate = L.featureGroup.subGroup(mcg),
+            distritoBellavistaLaPalmera = L.featureGroup.subGroup(mcg),
+            distritoNorte = L.featureGroup.subGroup(mcg),
+            distritoEste = L.featureGroup.subGroup(mcg),
+            distritoSanPabloSantaJusta = L.featureGroup.subGroup(mcg),
+            distritoNervion = L.featureGroup.subGroup(mcg),
+            distritoAlcosaTorreblanca = L.featureGroup.subGroup(mcg),
+            distritoOtro = L.featureGroup.subGroup(mcg),
+            grupoCooperativas = L.featureGroup.subGroup(mcg), 
             grupoSociedadesLaborales = L.featureGroup.subGroup(mcg),
             grupoAsociaciones = L.featureGroup.subGroup(mcg),
             grupoFundaciones = L.featureGroup.subGroup(mcg),
             grupoResto = L.featureGroup.subGroup(mcg),
+            distritoTriana = L.featureGroup.subGroup(mcg),
             control = L.control.layers(null, null, { collapsed: false  });
 
 mcg.addTo(map);
@@ -47,15 +62,109 @@ for(k=0;k<keys.length;k++) {
             map.panTo(e.latlng);
         });
     // mcg.addLayer(marker);
-        marker.addTo(elprop.Tipo_Entidad == 'Cooperativa' ? grupoCooperativas : elprop.Tipo_Entidad == 'Sociedad Laboral' ? grupoSociedadesLaborales : elprop.Tipo_Entidad == 'Asociación' ? grupoAsociaciones : elprop.Tipo_Entidad == 'Fundación' ? grupoFundaciones : grupoResto);
+        marker.addTo(filtroPorTipo(elprop));
+        marker.addTo(filtroPorDistrito(elprop));
 }
 
-control.addOverlay(grupoCooperativas, "Cooperativas");
-control.addOverlay(grupoSociedadesLaborales, "Sociedades laborales");
-control.addOverlay(grupoAsociaciones, "Asociaciones");
-control.addOverlay(grupoFundaciones, "Fundaciones");
-control.addOverlay(grupoResto, "Otras");
+function filtroPorDistrito(element) {
+    switch (element.Distrito) {
+        case 'Los Remedios':
+            filtro = distritoRemedios;
+            break;
+        case 'Triana':
+            filtro = distritoTriana;
+            break;
+        case 'Polígono Sur':
+            filtro = distritoSur;
+            break;
+        case 'Casco Antiguo':
+            filtro = distritoCascoAntiguo;
+            break;
+        case 'Macarena':
+            filtro = distritoMacarena;
+            break;
+        case 'Cerro-amate':
+            filtro = distritoCerroAmate;
+            break;
+        case 'Bellavista-La Palmera':
+            filtro = distritoBellavistaLaPalmera;
+            break;
+        case 'Norte':
+            filtro = distritoNorte;
+            break;
+        case 'Este':
+            filtro = distritoEste;
+            break;
+        case 'San Pablo-Santa Justa':
+            filtro = distritoSanPabloSantaJusta;
+            break;
+        case 'Nervión':
+            filtro = distritoNervion
+            break;
+        case 'Alcosa-Torreblanca':
+            filtro = distritoAlcosaTorreblanca;
+            break;
+        default:
+            filtro = distritoOtro;
+        }
+    return filtro;
+}
+
+function filtroPorTipo(element) {
+    switch (element.Tipo_Entidad) {
+        case 'Cooperativa':
+            filtro = grupoCooperativas;
+            break;
+        case 'Sociedad Laboral':
+            filtro = grupoSociedadesLaborales;
+            break;
+        case 'Asociación':
+            filtro = grupoAsociaciones;
+            break;
+        case 'Fundación':
+            filtro = grupoFundaciones;
+            break;
+        default:
+            filtro = grupoResto;
+        }
+    return filtro;
+}
+
+control.addOverlay(distritoRemedios, "DISTRITO: Los Remedios");
+control.addOverlay(distritoTriana, "DISTRITO: Triana");
+control.addOverlay(distritoSur, "DISTRITO: Sur");
+control.addOverlay(distritoCascoAntiguo, "DISTRITO: Casco Antiguo");
+control.addOverlay(distritoMacarena, "DISTRITO: Macarena");
+control.addOverlay(distritoCerroAmate, "DISTRITO: Cerro-Amate");
+control.addOverlay(distritoBellavistaLaPalmera, "DISTRITO: Bellavista-La Palmera");
+control.addOverlay(distritoNorte, "DISTRITO: Norte");
+control.addOverlay(distritoEste, "DISTRITO: Este");
+control.addOverlay(distritoSanPabloSantaJusta, "DISTRITO: San Pablo-Santa Justa");
+control.addOverlay(distritoNervion, "DISTRITO: Nervión");
+control.addOverlay(distritoAlcosaTorreblanca, "DISTRITO: Alcosa-Torreblanca");
+control.addOverlay(distritoOtro, "DISTRITO: No detectado");
+
+
+control.addOverlay(grupoCooperativas, "TIPO: Cooperativas");
+control.addOverlay(grupoSociedadesLaborales, "TIPO: Sociedades laborales");
+control.addOverlay(grupoAsociaciones, "TIPO: Asociaciones");
+control.addOverlay(grupoFundaciones, "TIPO: Fundaciones");
+control.addOverlay(grupoResto, "TIPO: No catalogadas");
 control.addTo(map);
+
+distritoRemedios.addTo(map);
+distritoTriana.addTo(map);
+distritoSur.addTo(map);
+distritoCascoAntiguo.addTo(map);
+distritoMacarena.addTo(map);
+distritoCerroAmate.addTo(map);
+distritoBellavistaLaPalmera.addTo(map);
+distritoNorte.addTo(map);
+distritoEste.addTo(map);
+distritoSanPabloSantaJusta.addTo(map);
+distritoNervion.addTo(map);
+distritoAlcosaTorreblanca.addTo(map);
+distritoOtro.addTo(map);
 
 grupoCooperativas.addTo(map);
 grupoSociedadesLaborales.addTo(map);
