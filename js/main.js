@@ -175,6 +175,15 @@ grupoResto.addTo(map);
 map.fitBounds(organizacionesLayer.getBounds());
 map.addLayer(mcg);
 
-$('#close').click(function() {
-    $('#content-box').hide();
-});
+
+var legend = L.control({position: 'bottomleft'});
+legend.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'info legend');
+    // loop through our density intervals and generate a label with a colored square for each interval
+    var str = "<ul class='list-unstyled'><li><i style='background-color: rgb(241, 128, 23);'></i> Densidad alta</li>";
+    str += "<li><i style='background-color: rgb(240, 194, 12);'></i> Densidad media</li>";
+    str += "<li><i style='background-color: rgb(110, 204, 57);'></i> Densidad baja</li></ul>";
+    div.innerHTML = str;
+    return div;
+}
+legend.addTo(map);
