@@ -83,7 +83,7 @@ function filtroPorDistrito(element) {
         case 'Macarena':
             filtro = distritoMacarena;
             break;
-        case 'Cerro-amate':
+        case 'Cerro-Amate':
             filtro = distritoCerroAmate;
             break;
         case 'Bellavista-La Palmera':
