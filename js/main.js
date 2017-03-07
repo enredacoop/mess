@@ -144,7 +144,7 @@ control.addOverlay(grupoCooperativas, "TIPO: Cooperativas");
 control.addOverlay(grupoSociedadesLaborales, "TIPO: Sociedades laborales");
 control.addOverlay(grupoAsociaciones, "TIPO: Asociaciones");
 control.addOverlay(grupoFundaciones, "TIPO: Fundaciones");
-control.addOverlay(grupoResto, "TIPO: No catalogadas");
+control.addOverlay(grupoResto, "TIPO: Otras iniciativas");
 control.addTo(map);
 
 distritoRemedios.addTo(map);
