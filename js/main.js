@@ -16,10 +16,9 @@ var mcg = L.markerClusterGroup(),
             distritoCerroAmate = L.featureGroup.subGroup(mcg),
             distritoBellavistaLaPalmera = L.featureGroup.subGroup(mcg),
             distritoNorte = L.featureGroup.subGroup(mcg),
-            distritoEste = L.featureGroup.subGroup(mcg),
+            distritoEsteAlcosaTorreblanca = L.featureGroup.subGroup(mcg),
             distritoSanPabloSantaJusta = L.featureGroup.subGroup(mcg),
             distritoNervion = L.featureGroup.subGroup(mcg),
-            distritoAlcosaTorreblanca = L.featureGroup.subGroup(mcg),
             distritoOtro = L.featureGroup.subGroup(mcg),
             grupoCooperativas = L.featureGroup.subGroup(mcg), 
             grupoSociedadesLaborales = L.featureGroup.subGroup(mcg),
@@ -74,7 +73,7 @@ function filtroPorDistrito(element) {
         case 'Triana':
             filtro = distritoTriana;
             break;
-        case 'Polígono Sur':
+        case 'Sur':
             filtro = distritoSur;
             break;
         case 'Casco Antiguo':
@@ -92,17 +91,14 @@ function filtroPorDistrito(element) {
         case 'Norte':
             filtro = distritoNorte;
             break;
-        case 'Este':
-            filtro = distritoEste;
+        case 'Este-Alcosa-Torreblanca':
+            filtro = distritoEsteAlcosaTorreblanca;
             break;
         case 'San Pablo-Santa Justa':
             filtro = distritoSanPabloSantaJusta;
             break;
         case 'Nervión':
             filtro = distritoNervion
-            break;
-        case 'Alcosa-Torreblanca':
-            filtro = distritoAlcosaTorreblanca;
             break;
         default:
             filtro = distritoOtro;
@@ -138,10 +134,9 @@ control.addOverlay(distritoMacarena, "DISTRITO: Macarena");
 control.addOverlay(distritoCerroAmate, "DISTRITO: Cerro-Amate");
 control.addOverlay(distritoBellavistaLaPalmera, "DISTRITO: Bellavista-La Palmera");
 control.addOverlay(distritoNorte, "DISTRITO: Norte");
-control.addOverlay(distritoEste, "DISTRITO: Este");
+control.addOverlay(distritoEsteAlcosaTorreblanca, "DISTRITO: Este-Alcosa-Torreblanca");
 control.addOverlay(distritoSanPabloSantaJusta, "DISTRITO: San Pablo-Santa Justa");
 control.addOverlay(distritoNervion, "DISTRITO: Nervión");
-control.addOverlay(distritoAlcosaTorreblanca, "DISTRITO: Alcosa-Torreblanca");
 control.addOverlay(distritoOtro, "DISTRITO: No detectado");
 
 
@@ -160,10 +155,9 @@ distritoMacarena.addTo(map);
 distritoCerroAmate.addTo(map);
 distritoBellavistaLaPalmera.addTo(map);
 distritoNorte.addTo(map);
-distritoEste.addTo(map);
+distritoEsteAlcosaTorreblanca.addTo(map);
 distritoSanPabloSantaJusta.addTo(map);
 distritoNervion.addTo(map);
-distritoAlcosaTorreblanca.addTo(map);
 distritoOtro.addTo(map);
 
 grupoCooperativas.addTo(map);
