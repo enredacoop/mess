@@ -28,6 +28,9 @@ html, body {
     border-top: 5px solid #2f2f2f;
     padding: 40px 0px 40px 0px;
 }
+#footer h4 {
+    font-weight: bold;
+}
 
 .redbg {
     background-color: #B80047 !important;
